@@ -3,6 +3,8 @@
 #include <time.h>
 #include <string.h>
 
+void clearScreen();
+
 void shell(int* items, int count) {
     int i, j, gap, k;
     int x, a[5];
@@ -125,6 +127,9 @@ double measureStdQsortTime(int* arr, int n) {
 }
 
 int main() {
+    
+    clearScreen();
+
     const int n = 100000; 
     int* originalArray = malloc(n * sizeof(int));
 
@@ -194,4 +199,12 @@ int main() {
     printf("Результаты записаны в файл rez2.txt\n");
 
     return 0;
+}
+
+void clearScreen() {
+    #ifdef _WIN32
+    system("cls");
+    #else
+    system("clear");
+    #endif
 }
